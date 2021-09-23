@@ -78,7 +78,8 @@ def loginimpl(request):
     pwd = request.POST['pwd']
 
     try:
-        client = ClientDB().selectOne(id)
+        client = ClientDB().selectOne(pwd,email)
+        print(pwd,email)
         if pwd == client.getPwd():
             request.session['logininfo'] = {'id': client.getId(), 'name': client.getName()}
             print(request.session['logininfo'])
@@ -88,6 +89,12 @@ def loginimpl(request):
     except:
         context = {'msg': ErrorCode.e02}
         return render(request,'login_two.html' , context)
+
+def logout(request):
+    if request.session['logininfo'] != None:
+        del request.session['logininfo']
+    return redirect('index')
+
 def forget_password(request):
     return render(request, 'forget-password.html')
 def sign_up(request):

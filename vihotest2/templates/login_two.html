@@ -51,6 +51,7 @@
           <div class="col-xl-7 p-0">
             <div class="login-card">
               <form action="{% url 'loginimpl' %}" method="post" class="theme-form login-form">
+                {% csrf_token %}
                 <h4>Login</h4>
                 <h6>Welcome back! Log in to your account.</h6>
                 <div class="form-group">
@@ -72,7 +73,7 @@
                     <label class="text-muted" for="checkbox1">Remember password</label>
                   </div><a class="link" href="{% url 'forget_password' %}">Forgot password?</a>
                 </div>
-                <div class="form-group"><a class="btn btn-primary btn-block" href="{% url 'index' %}" type="submit">Sign in</a></div>
+                <div class="form-group"><a class="btn btn-primary btn-block" type="submit">Sign in</a></div>
 <!--                <div class="login-social-title">-->
 <!--                  <h5>Sign in with</h5>-->
 <!--                </div>-->

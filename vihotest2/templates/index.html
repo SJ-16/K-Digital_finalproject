@@ -68,7 +68,14 @@
               </li>
 
               <li class="onhover-dropdown p-0">
-                <button class="btn btn-primary-light" type="button"><a href="{% url 'login_two' %}"><i data-feather="log-out"></i>Log out</a></button>
+                  {% if request.session.logininfo.id == None %}
+                    <button class="btn btn-primary-light" type="button"><a href="{% url 'login_two' %}"><i data-feather="log-in"></i>Login</a></button>
+                    <button class="btn btn-primary-light" type="button"><a href="{% url 'sign_up' %}"><i data-feather="edit"></i>Sign up</a></button>
+                  {% else %}
+                      <h2>{{request.session.logininfo.name}}님 반갑습니다!</h2>
+    <!--                  <a href="{% url 'myinfo' %}" class="btn-get-started">내 정보 수정</a>-->
+                      <a href="{% url 'logout' %}" class="btn-get-started scrollto">LOGOUT</a>
+                  {% endif %}
               </li>
             </ul>
           </div>
