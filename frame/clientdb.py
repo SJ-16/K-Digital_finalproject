@@ -32,11 +32,11 @@ class ClientDB(DB):
         con.commit()
         super().close(cursor, con)
 
-    def update(self, id, pwd, name, email, phone_num):
+    def update(self, pwd, name, phone_num, email):
         con = super().getcon()
         cursor = con.cursor()
         try:
-            cursor.execute(Sql.update %(pwd, name, email, phone_num, id))
+            cursor.execute(Sql.update %(pwd, name, phone_num, email))
             con.commit()
         except Exception as err:
             con.rollback()
@@ -44,11 +44,11 @@ class ClientDB(DB):
         finally:
             super().close(cursor, con)
 
-    def delete(self, id):
+    def delete(self, email):
         con = super().getcon()
         cursor = con.cursor()
         try:
-            cursor.execute(Sql.delete %(id))
+            cursor.execute(Sql.delete %(email))
             con.commit()
         except Exception as err:
             con.rollback()
@@ -59,14 +59,14 @@ class ClientDB(DB):
 
 
 if __name__ == '__main__':
-    # client = ClientDB().insert('123456','김말숙','123456@gmail.com','010-1234-5678')
-    # print(client)
+    client = ClientDB().insert('123456','김말숙','123456@gmail.com','010-1234-5678')
+    print(client)
 
     # client = ClientDB().selectOne('123456', '123456@gmail.com')
     # print(client)
 
     # ClientDB().update('1', '123456','김말숙','123456@gmail.com','010-1234-5678')
 
-    clientall = ClientDB().selectAll()
-    for client in clientall:
-        print(client)
+    # clientall = ClientDB().selectAll()
+    # for client in clientall:
+    #     print(client)

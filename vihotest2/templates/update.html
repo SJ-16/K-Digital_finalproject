@@ -9,7 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Login Page</title>
+    <title>Update Page</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
@@ -26,6 +26,7 @@
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css" href="../assets/css/feather-icon.css">
     <!-- Plugins css start-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/sweetalert2.css">
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
@@ -44,38 +45,58 @@
     </div>
     <!-- Loader ends-->
     <!-- page-wrapper Start-->
-    <section>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-5"><img class="bg-img-cover bg-center" src="../assets/images/login/3.jpg" alt="looginpage"></div>
-          <div class="col-xl-7 p-0">
+    <section>         
+      <div class="container-fluid p-0"> 
+        <div class="row m-0">
+          <div class="col-12 p-0">    
             <div class="login-card">
-              <form action="{% url 'loginimpl' %}" method="post" class="theme-form login-form">
+              <form action="{% url 'infoupdate' %}" method="post" class="theme-form login-form">
                 {% csrf_token %}
-                <h4>Login</h4>
-                <h6>Welcome back! Log in to your account.</h6>
+                <h4>Update Page</h4>
+                <h6>Enter your personal details to update account</h6>
+                <div class="form-group">
+                  <label>Your Name</label>
+                  <div class="small-group">
+                    <div class="input-group"><span class="input-group-text"><i class="icon-user"></i></span>
+                      <input class="form-control" type="text" required="" name="name" id="name" value="{{client.getName}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <div class="row">
+                    <div class="col-4 col-sm-3">
+                      <input class="form-control" type="text" value="+ 82">
+                    </div>
+                    <div class="col-8 col-sm-9">
+                      <input class="form-control" type="text" name="phone_num" id="phone_num" value="{{client.getPhone_num}}">
+                    </div>
+                  </div>
+                </div>
                 <div class="form-group">
                   <label>Email Address</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
-                    <input class="form-control" type="email" required="" placeholder="Test@gmail.com" name="email" id="email">
+                    <input class="form-control" type="email" required=""  name="email" id="email" value="{{client.getEmail}}" readonly>
                   </div>
                 </div>
                 <div class="form-group">
                   <label>Password</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
-                    <input class="form-control" type="password"  required="" placeholder="*********" name="pwd" id="pwd">
+                    <input class="form-control" type="password" required="" name="pwd" id="pwd" value="{{client.getPwd}}">
                     <div class="show-hide"><span class="show">                         </span></div>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="checkbox">
                     <input id="checkbox1" type="checkbox">
-                    <label class="text-muted" for="checkbox1">Remember password</label>
-                  </div><a class="link" href="{% url 'forget_password' %}">Forgot password?</a>
+                    <label class="text-muted" for="checkbox1">Agree with <span>Privacy Policy                   </span></label>
+                  </div>
                 </div>
-                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign in</button></div>
-<!--                <div class="login-social-title">-->
-<!--                  <h5>Sign in with</h5>-->
+                <div class="form-group">
+                  <button class="btn btn-primary btn-block" type="submit">Update</button>
+                </div>
+<!--                <div class="login-social-title">                -->
+<!--                  <h5>signup with</h5>-->
 <!--                </div>-->
 <!--                <div class="form-group">-->
 <!--                  <ul class="login-social">-->
@@ -85,7 +106,7 @@
 <!--                    <li><a href="https://www.instagram.com/login" target="_blank"><i data-feather="instagram">                  </i></a></li>-->
 <!--                  </ul>-->
 <!--                </div>-->
-                <p>Don't have account?<a class="ms-2" href="{% url 'sign_up' %}">Create Account</a></p>
+                <p>Wanna go back home?<a class="ms-2" href="{% url 'index' %}">Go Home</a></p>
               </form>
             </div>
           </div>
@@ -105,6 +126,7 @@
     <script src="../assets/js/bootstrap/popper.min.js"></script>
     <script src="../assets/js/bootstrap/bootstrap.min.js"></script>
     <!-- Plugins JS start-->
+    <script src="../assets/js/sweet-alert/sweetalert.min.js"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>

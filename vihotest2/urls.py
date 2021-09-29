@@ -52,5 +52,8 @@ urlpatterns = [
     path('sign_up_two', views.sign_up_two, name='sign_up_two'),
     path('signupimpl', views.signupimpl, name='signupimpl'),
     path('search', views.search, name='search'),
+    path('general_widget', views.general_widget, name='general_widget'),
+    path('update', views.update, name='update'),
+    path('infoupdate', views.infoupdate, name='infoupdate'),
 
 ]

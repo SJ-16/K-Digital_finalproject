@@ -9,7 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>viho - Premium Admin Template</title>
+    <title>Exa_wave</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
@@ -39,6 +39,14 @@
     <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+    <style>
+      #body{
+        background-image : url("../assets/images/bg2.jpg");
+      }
+      #body2{
+        background: rgba(0, 0, 0, 0);
+      }
+    </style>
   </head>
   <body>
     <!-- Loader starts-->
@@ -72,9 +80,9 @@
                     <button class="btn btn-primary-light" type="button"><a href="{% url 'login_two' %}"><i data-feather="log-in"></i>Login</a></button>
                     <button class="btn btn-primary-light" type="button"><a href="{% url 'sign_up' %}"><i data-feather="edit"></i>Sign up</a></button>
                   {% else %}
-                      <h2>{{request.session.logininfo.name}}님 반갑습니다!</h2>
-    <!--                  <a href="{% url 'myinfo' %}" class="btn-get-started">내 정보 수정</a>-->
-                      <a href="{% url 'logout' %}" class="btn-get-started scrollto">LOGOUT</a>
+                    {{request.session.logininfo.name}}님
+                    <button class="btn btn-primary-light" type="button"><a href="{% url 'logout' %}"><i data-feather="log-out"></i>Logout</a></button>
+                    <button class="btn btn-primary-light" type="button"><a href="{% url 'update' %}"><i data-feather="edit"></i>Update</a></button>
                   {% endif %}
               </li>
             </ul>
@@ -84,17 +92,14 @@
       </div>
       <!-- Page Header Ends -->
       <!-- Page Body Start-->
-      <div class="page-body-wrapper sidebar-icon">
-        <!-- Page Sidebar Start-->
-
-        <!-- Page Sidebar Ends-->
-        <div class="page-body">
+      <div class="page-body-wrapper sidebar-icon" id="body">
+        <div class="page-body" style="margin-left:100px; margin-right:100px;" id="body2">
           <!-- Container-fluid starts-->
           <div class="container-fluid dashboard-default-sec">
             <div class="row">
               <div style="height:100%;">
                 <div class="card testimonial text-center">
-                  <div class="card-body">
+                  <div class="card-body" id="card-body1">
                     <div>
                       <div class="item"><i class="fa fa-quote-left"></i>
                         <h3 class="font-dark">텍스트마이닝을 통한 트렌드 예측 서비스, Exa_Wave</h3>
@@ -103,77 +108,6 @@
  본 서비스는 대한민국에서 가치있는 핵심 키워드를 제시하여, 기업에게는 새로운 동력을 줄 사업 아이템을, 개인에게는 트렌디한 삶을 제시해준다.
 </p><img class="img-80" src="../assets/images/dashboard/boy-2.png" alt="">
                         <h5 class="font-primary">이름</h5><span>역할</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div style="height:100%;">
-                <div class="row">
-                  <div style="height:100%;">
-                    <div class="card profile-greeting">
-                      <div class="card-header">
-                        <div class="headefwr-top">
-                          <div class="setting-list bg-primary position-unset">
-                            <ul class="list-unstyled setting-option">
-                              <li>
-                                <div class="setting-white"><i class="icon-settings"></i></div>
-                              </li>
-                              <li><i class="view-html fa fa-code font-white"></i></li>
-                              <li><i class="icofont icofont-maximize full-card font-white"></i></li>
-                              <li><i class="icofont icofont-minus minimize-card font-white"></i></li>
-                              <li><i class="icofont icofont-refresh reload-card font-white"></i></li>
-                              <li><i class="icofont icofont-error close-card font-white"> </i></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-body text-center p-t-0">
-                        <h3 class="font-light">텍스트마이닝을 통한 트렌드 예측 서비스, Exa_Wave</h3>
-                        <p>영원한 캐시카우(Cash Cow)는 없다. 4차 산업혁명과, 포스트 코로나 시대를 이끌 새로운 성장 동력을 텍스트 마이닝을 통해 찾고자한다.
-
- 본 서비스는 대한민국에서 가치있는 핵심 키워드를 제시하여, 기업에게는 새로운 동력을 줄 사업 아이템을, 개인에게는 트렌디한 삶을 제시해준다.
-</p>
-                        <button class="btn btn-light">Update</button>
-                      </div>
-                      <div class="confetti">
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="confetti-piece"></div>
-                        <div class="code-box-copy">
-                          <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#profile-greeting" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-                          <pre><code class="language-html" id="profile-greeting">                                     &lt;div class="card profile-greeting"&gt;
-  &lt;div class="card-header"&gt;
-    &lt;div class="header-top"&gt;
-      &lt;div class="setting-list bg-primary"&gt;
-        &lt;ul class="list-unstyled setting-option"&gt;
-          &lt;li&gt;&lt;div class="setting-white"&gt;&lt;i class="icon-settings"&gt;&lt;/i&gt;&lt;/div&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;i class="view-html fa fa-code font-white"&gt;&lt;/i&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;i class="icofont icofont-maximize full-card font-white"&gt;&lt;/i&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;i class="icofont icofont-minus minimize-card font-white"&gt;&lt;/i&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;i class="icofont icofont-refresh reload-card font-white"&gt;&lt;/i&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;i class="icofont icofont-error close-card font-white"&gt; &lt;/i&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="card-body text-center"&gt;
-    &lt;h3 class="font-light"&gt;Wellcome Back, John!!&lt;/h3&gt;
-    &lt;p&gt;Lorem ipsum is simply dummy text of the printing and typesetting industry.Lorem ipsum has been&lt;/p&gt;
-    &lt;button class="btn btn-light"&gt;Update &lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -191,9 +125,9 @@
                 <div class="card income-card">
                   <div class="card-header">
                     <div class="header-top d-sm-flex align-items-center">
-                      <h5>키워드 이슈맵 들어올 자리 ( 이거 쓸건 아님 )</h5>
+                      <h5> ( 키워드 이슈맵 자리 )</h5>
                       <div class="center-content">
-                        <p class="d-sm-flex align-items-center"><span class="font-primary m-r-10 f-w-700">$859.25k</span><i class="toprightarrow-primary fa fa-arrow-up m-r-10"></i>86% More than last year</p>
+                        <p class="d-sm-flex align-items-center"><span class="font-primary m-r-10 f-w-700">keyword issue map position</span><i class="toprightarrow-primary fa fa-arrow-up m-r-10"></i>86% More than last year</p>
                       </div>
                       <div class="setting-list">
                         <ul class="list-unstyled setting-option">
@@ -213,33 +147,31 @@
                     <div id="chart-timeline-dashbord"></div>
                     <div class="code-box-copy">
                       <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#yearly-overview" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-                      <pre><code class="language-html" id="yearly-overview">&lt;div class="card income-card"&gt;
-  &lt;div class="card-header"&gt;
-    &lt;div class="header-top d-sm-flex align-items-center"&gt;
-      &lt;h5&gt; yearly overview  &lt;/h5&gt;
-       &lt;div class="center-content" &gt;
-         &lt;p&gt;
-           &lt;span class="font-primary fontbold-600" &gt; $859.25k &lt;/span&gt;
-           &lt;i class="toprightarrow-primary fa fa-arrow-up m-l-10 m-r-10" &gt; &lt;/i&gt;
-            86% More than last year
-         &lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class="setting-list"&gt;
-        &lt;ul class="list-unstyled setting-option"&gt;
-          &lt;li&gt;&lt;div class="setting-primary"&gt;&lt;i class="icon-settings"&gt;&lt;/i&gt;&lt;/div&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;i class="view-html fa fa-code font-primary"&gt;&lt;/i&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;i class="icofont icofont-maximize full-card font-primary"&gt;&lt;/i&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;i class="icofont icofont-minus minimize-card font-primary"&gt;&lt;/i&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;i class="icofont icofont-refresh reload-card font-primary"&gt;&lt;/i&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;i class="icofont icofont-error close-card font-primary"&gt; &lt;/i&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="card-body p-0"&gt;
-    &lt;div id="chart-timeline-dashbord"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-fluid general-widget">
+                <div class="col-xl-6 xl-100 box-col-12">
+                  <div class="card">
+                    <div class="cal-date-widget card-body">
+                      <div class="row">
+                        <div class="col-xl-6 col-xs-12 col-md-6 col-sm-6">
+                          <div class="cal-info text-center">
+                            <div>
+                              <h2>28</h2>
+                              <div class="d-inline-block"><span class="b-r-dark pe-3">September</span><span class="ps-3">2021</span></div>
+                              <p class="f-16">There is no minimum donation, any sum is appreciated</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xl-6 col-xs-12 col-md-6 col-sm-6">
+                          <div class="cal-datepicker">
+                            <div class="datepicker-here float-sm-end" data-language="en">           </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -250,7 +182,7 @@
           <!-- Container-fluid Ends-->
         </div>
         <!-- footer start-->
-        <footer class="footer">
+        <footer class="footer" style="margin-left:0px;">
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6 footer-copyright">

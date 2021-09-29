@@ -76,12 +76,12 @@ def login_two(request):
 def loginimpl(request):
     email = request.POST['email']
     pwd = request.POST['pwd']
-
+    # ㅡㅡㅡㅡㅡㅡㅡㅡㅡ 여기까진 ok
     try:
-        client = ClientDB().selectOne(pwd,email)
-        print(pwd,email)
+        client = ClientDB().selectOne(pwd, email)
         if pwd == client.getPwd():
-            request.session['logininfo'] = {'id': client.getId(), 'name': client.getName()}
+            request.session['logininfo'] = {'id': client.getId(), 'name': client.getName(), 'pwd': client.getPwd(),
+                                            'email': client.getEmail()}
             print(request.session['logininfo'])
             return redirect('index')
         else:
@@ -109,7 +109,6 @@ def signupimpl(request):
         pwd = request.POST['pwd']
         name = request.POST['name']
         phone_num = request.POST['phone_num']
-        print(pwd, name, email, phone_num)
         ClientDB().insert(pwd, name, email, phone_num)
         return render(request, 'login_two.html')
     except Exception as err:
@@ -120,5 +119,26 @@ def signupimpl(request):
 def search(request):
     return render(request, 'search.html')
 
+def general_widget(request):
+    return render(request, 'general-widget.html')
 
+def update(request):
+    pwd = request.session['logininfo']['pwd']
+    email = request.session['logininfo']['email']
+    print(pwd, email)
+    client = ClientDB().selectOne(pwd, email)
+    context = {'client': client}
+    return render(request, 'update.html', context)
+def infoupdate(request):
+    try:
+        email = request.POST['email']
+        pwd = request.POST['pwd']
+        name = request.POST['name']
+        phone_num = request.POST['phone_num']
+        ClientDB().update(pwd, name, phone_num, email)
+        return redirect('index')
+    except Exception as err:
+        print('에러:', err)
+        context= {'msg': ErrorCode.e03}
+        return render(request, 'update.html', context)
 
